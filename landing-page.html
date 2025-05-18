@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「タナトスの誘惑」公式特設ページ｜YOASOBI小説集</title>
+    <meta name="description" content="YOASOBIの原作小説集『タナトスの誘惑』の公式特設ページ。『夜に翔』制作秘話を語るPodcastをお聴きください。購入はこちら。">
+    <meta property="og:title" content="「タナトスの誘惑」公式特設ページ｜YOASOBI小説集">
+    <meta property="og:description" content="YOASOBIの原作小説集『タナトスの誘惑』の公式特設ページ。『夜に翔』制作秘話を語るPodcastをお聴きください。購入はこちら。">
+    <meta property="og:image" content="/path/to/cover.jpg">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #ff006e;
+            --dark-color: #191919;
+            --light-color: #ffffff;
+            --gray-color: #f5f5f5;
+            --text-color: #333333;
+            --success-color: #38b000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヒーローセクション */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-color);
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Podcastプレーヤー */
+        .podcast-section {
+            padding: 40px 0;
+            text-align: center;
+            background-color: var(--light-color);
+        }
+        
+        .podcast-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .podcast-player {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--gray-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .play-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.05);
+            background-color: #2a75e8;
+        }
+        
+        .time-display {
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: var(--primary-color);
+            border-radius: 4px;
+            transition: width 0.1s linear;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+        }
+        
+        .volume-icon {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .volume-slider {
+            width: 100px;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        
+        .volume-level {
+            height: 100%;
+            width: 80%;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        /* 追加機能ボタン */
+        .features-section {
+            padding: 30px 0;
+            background-color: var(--gray-color);
+            text-align: center;
+        }
+        
+        .features-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-button {
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: var(--light-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-button i {
+            margin-right: 8px;
+        }
+        
+        .feature-button:hover {
+            background: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        /* 補助コンテンツ */
+        .content-section {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto 0;
+        }
+        
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 15px 20px;
+            background: var(--light-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            background: var(--gray-color);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 15px 20px;
+            max-height: 1000px;
+        }
+        
+        /* テスティモニアル */
+        .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .testimonial-card {
+            background: var(--light-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            width: 300px;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        
+        .author-info p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        /* シェアセクション */
+        .share-section {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--gray-color);
+        }
+        
+        .share-title {
+            margin-bottom: 20px;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .share-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .share-button.twitter {
+            background-color: #1DA1F2;
+        }
+        
+        .share-button.facebook {
+            background-color: #4267B2;
+        }
+        
+        .share-button.line {
+            background-color: #06C755;
+        }
+        
+        .share-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .email-share {
+            margin-top: 20px;
+        }
+        
+        .email-input {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+            margin-right: 10px;
+        }
+        
+        .email-button {
+            padding: 12px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .email-button:hover {
+            background-color: #2a75e8;
+        }
+        
+        /* チャットボット */
+        .chatbot-container {
+            max-width: 500px;
+            margin: 0 auto;
+            display: none;
+        }
+        
+        .chat-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .chat-messages {
+            height: 300px;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        .message {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            background: var(--primary-color);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 0;
+        }
+        
+        .bot-message {
+            background: #e9e9eb;
+            color: black;
+            border-bottom-left-radius: 0;
+        }
+        
+        .chat-input {
+            display: flex;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            outline: none;
+        }
+        
+        .chat-input button {
+            padding: 0 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* トランスクリプト */
+        .transcript-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--light-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            display: none;
+        }
+        
+        .transcript-text {
+            line-height: 1.8;
+        }
+        
+        .transcript-text p {
+            margin-bottom: 15px;
+        }
+        
+        /* 購入ボタン（固定表示） */
+        .purchase-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+        
+        .purchase-button {
+            background: var(--success-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+        }
+        
+        .purchase-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: #32a000;
+        }
+        
+        .purchase-button i {
+            margin-right: 8px;
+        }
+        
+        /* メディアクエリ */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .feature-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-button {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .testimonials {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .testimonial-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .email-input, .email-button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .share-buttons {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヒーローヘッダー -->
+    <header class="hero-header">
+        <div class="container">
+            <img src="/path/to/cover.jpg" alt="『タナトスの誘惑』表紙" class="hero-logo">
+            <h1 class="hero-title">『タナトスの誘惑』を耳で辿る</h1>
+            <p class="hero-subtitle">YOASOBI『夜に翔』制作秘話を語るPodcastを配信中</p>
+        </div>
+    </header>
+    
+    <!-- Podcastプレーヤー -->
+    <section class="podcast-section">
+        <div class="container">
+            <h2 class="podcast-title">Spotify で聴く「夜に翔」制作の舞台裏</h2>
+            <div class="podcast-player">
+                <iframe style="border-radius:12px"
+                    src="https://open.spotify.com/embed/episode/2Xcog8E2JkB9N1eCQqAcmR?utm_source=generator"
+                    width="100%" height="352" frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 追加機能ボタン -->
+    <section class="features-section">
+        <div class="container">
+            <h3 class="features-title">もっと知る</h3>
+            <div class="feature-buttons">
+                <button class="feature-button" id="faqBtn">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ セクション -->
+    <section class="content-section" id="faqSection" style="display: none;">
+        <div class="container">
+            <h3 class="section-title">よくある質問</h3>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>『タナトスの誘惑』とはどのような本ですか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>『タナトスの誘惑』はYOASOBIの楽曲の原作となった小説をまとめた小説集です。『夜に駆ける』『あの夢をなぞって』など人気曲の原作小説を読むことができます。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>『夜に翔』はどのような楽曲ですか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>『夜に翔』はYOASOBIの楽曲で、『タナトスの誘惑』に収録されている同名小説を原作としています。切ない恋心と前向きなメッセージが込められた楽曲です。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Podcastではどのような内容が語られていますか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>このPodcastでは、『夜に翔』の原作小説の制作背景や、YOASOBIの楽曲として生まれ変わる過程、作家の想いなどが語られています。ファンの方も、これから作品を知る方も楽しめる内容となっています。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>本はどこで購入できますか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>当ページ下部の「今すぐ購入する」ボタンからAmazonの購入ページへ移動できます。また、全国の主要書店でも取り扱いがございます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="content-section">
+        <div class="container">
+            <h3 class="section-title">よくある質問</h3>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>この商品はどのような人におすすめですか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>主に20代〜40代の〇〇に興味がある方におすすめです。特に△△を重視する方に最適な商品となっています。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>使用上の注意点はありますか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>使用前に説明書をよくお読みください。〇〇の場合は使用を避けてください。また、初めてご使用になる際は△△に注意しながらお試しください。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>他の商品との違いは何ですか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>当商品は〇〇の特徴があり、一般的な商品と比べて△△の点で優れています。特に□□の機能は他にはない独自のものです。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>保証期間はどのくらいですか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>ご購入から1年間の製品保証をご提供しています。正規の使用方法で生じた不具合については無償で修理または交換いたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ユーザーの声 -->
+    <section class="content-section">
+        <div class="container">
+            <h3 class="section-title">ユーザーの声</h3>
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        「初めて使ったときから、その違いに驚きました。今では日常に欠かせないアイテムになっています。」
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>佐藤 由美</h4>
+                            <p>30代・会社員</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        「他の商品と比較して使ってみましたが、明らかに効果が違います。価格以上の価値があると思います。」
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>田中 健太</h4>
+                            <p>40代・自営業</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        「友人の紹介で知りました。半信半疑でしたが使ってみたら本当に良くて、今では友人にも勧めています。」
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>山田 美咲</h4>
+                            <p>20代・学生</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- シェア・リマインダー設定 -->
+    <section class="share-section">
+        <div class="container">
+            <h3 class="share-title">友達にシェアする</h3>
+            <div class="share-buttons">
+                <div class="share-button twitter">
+                    <i class="fab fa-twitter"></i>
+                </div>
+                <div class="share-button facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="share-button line">
+                    <i class="fab fa-line"></i>
+                </div>
+            </div>
+            <div class="email-share" id="reminderForm">
+                <h4>購入リマインダーを設定</h4>
+                <p>メールアドレスを登録すると、お得な情報や購入リマインダーをお送りします</p>
+                <form id="emailForm">
+                    <input type="email" class="email-input" placeholder="メールアドレスを入力" required>
+                    <button type="submit" class="email-button">登録する</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 購入ボタン（固定表示） -->
+    <div class="purchase-container">
+        <button class="purchase-button" id="purchaseButton">
+            <i class="fas fa-shopping-cart"></i> 今すぐ購入する
+        </button>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        // ページロード時の処理
+        document.addEventListener('DOMContentLoaded', function() {
+            // NFCからの流入情報取得 (トラッキングパラメータ)
+            const urlParams = new URLSearchParams(window.location.search);
+            const nfcSource = urlParams.get('source') || 'unknown';
+            
+            // FAQ表示切替
+            document.getElementById('faqBtn').addEventListener('click', function() {
+                const faqSection = document.getElementById('faqSection');
+                faqSection.style.display = faqSection.style.display === 'none' ? 'block' : 'none';
+            });
+            
+            // FAQアイテム開閉
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-chevron-up');
+                    icon.classList.toggle('fa-chevron-down');
+                });
+            });
+            
+            // リンクトラッキング
+            document.getElementById('purchaseButton').addEventListener('click', function() {
+                // アナリティクスイベント送信（例）
+                if (window.gtag) {
+                    gtag('event', 'click', {
+                        'event_category': 'purchase',
+                        'event_label': 'amazon_button',
+                        'value': 1
+                    });
+                }
+            });
+            
+            // SNSシェアボタン
+            document.querySelectorAll('.share-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const pageUrl = encodeURIComponent(window.location.href);
+                    const pageTitle = encodeURIComponent(document.title);
+                    let shareUrl = '';
+                    
+                    if (this.classList.contains('twitter')) {
+                        shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+                    } else if (this.classList.contains('facebook')) {
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+                    } else if (this.classList.contains('line')) {
+                        shareUrl = `https://social-plugins.line.me/lineit/share?url=${pageUrl}`;
+                    }
+                    
+                    if (shareUrl) {
+                        window.open(shareUrl, '_blank', 'width=600,height=400');
+                    }
+                });
+            });
+            
+            // Googleアナリティクス初期化（実装時に置き換え）
+            function initAnalytics() {
+                // Google Analytics コード
+                // 例: gtag('config', 'UA-XXXXXXXX-X');
+            }
+        });
+    </script>
+</body>
+</html>
